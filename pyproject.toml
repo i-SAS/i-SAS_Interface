@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "isas"
+version = "1.0.0"
+description = "Implementation of interface iSAS for integrate Structural Analysis System."
+authors = ["Makito Kobayashi", "Kohei Mikami"]
+repository = "https://github.com/i-SAS/i-SAS_Interface"
+packages = [
+    { include = "isas" },
+]
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.12"
+influxdb_client = "*"
+isas_base = { git = "ssh://git@github.com/i-SAS/i-SAS_Base_MIT", branch = "master" }
+matplotlib = "*"
+numpy = "*"
+pandas = "*"
+pyyaml = "*"
+sqlalchemy = "*"
+scipy = "*"
+
+[tool.poetry.dev-dependencies]
+flake8 = "6.1.0"
+flake8-isort = "*"
+flake8-quotes = "*"
+ipython = "*"
+isas_subpackage_template = {git = "ssh://git@github.com/i-SAS/i-SAS_Subpackage-template_MIT", branch = "master" }
+jupyter = "*"
+pep8-naming = "*"
+pyproject-flake8 = "*"
+
+[tool.poetry.scripts]
+isas_construct_project = 'isas.service.scripts.construct_project:main'
+isas_run = 'isas.service.scripts.run:main'
+
+[tool.isort]
+multi_line_output = 5
+
+[tool.flake8]
+max-line-length = 120
+exclude = [
+    "*/__init__.py",
+    ]
+
+[build-system]
+requires = ["poetry_core>=1.3.2"]
+build-backend = "poetry.core.masonry.api"

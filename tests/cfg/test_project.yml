@@ -1,0 +1,49 @@
+SERVICES:
+
+  test_interface:
+    PORT: 50001
+    DEPENDENCIES: []
+    SERVICE_TYPE: Interface  # 'Interface' or 'Dashboard'
+    SERVICE:
+      DOWNLOAD_DATA: False
+      INIT_DB: False
+      DATADRIVE: /root/datadrive_tmp
+      TABLE_DATA_SYSTEM: 'file'  # 'file' or 'postgres'
+      TIME_SERIES_DATA_SYSTEM: 'file'  # 'file' or 'influx'
+      PREPROCESS: []
+      DATA_PROCESSING_METHOD: batch  # 'batch', 'stream', or 'simulate_stream'
+      STREAM_EXPORT_QUEUE_MAXSIZE: 100
+      SIMULATE_STREAM_PARAMS:
+        SLEEP_TIME: 1  # sec
+        LOOP: False  # bool
+        FIRST_DATETIME: '2020-04-25 00:00:00'  # YYYY-mm-dd HH:MM:SS[.ffffff]
+        LAST_DATETIME: '2020-04-25 00:00:11'  # YYYY-mm-dd HH:MM:SS[.ffffff]
+        INTERVAL: 1  # sec
+    SUBPACKAGES: []
+    EXPORT_DATA_NAMES: []
+
+  test_dashboard:
+    PORT: 50002
+    DEPENDENCIES: [test_interface, ]
+    SERVICE_TYPE: Dashboard  # 'Interface' or 'Dashboard'
+    SERVICE:
+      DOWNLOAD_DATA: False
+      INIT_DB: False
+      DATADRIVE: /root/datadrive_tmp
+      TABLE_DATA_SYSTEM: 'file'  # 'file' or 'postgres'
+      TIME_SERIES_DATA_SYSTEM: 'file'  # 'file' or 'influx'
+      PREPROCESS: []
+      DATA_PROCESSING_METHOD: stream  # 'batch', 'stream', or 'simulate_stream'
+      LAYOUT:
+        LAYOUT_NAME: tests.dashboard.content_layout
+        COLOR_THEME: white
+        PROJECT_TITLE: test_project
+        WINDOW_TITLE: test_window 
+        WINDOW_WIDTH: 1280
+        WINDOW_HEIGHT: 720
+      INTERVAL: 100
+    SUBPACKAGES: []
+
+NETWORK:
+  NETWORK_NAME: project_network
+  EXTERNAL: True

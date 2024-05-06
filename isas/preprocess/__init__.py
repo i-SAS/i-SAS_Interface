@@ -1,0 +1,1 @@
+from .create_static_data import create_static_data

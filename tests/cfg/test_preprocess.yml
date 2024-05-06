@@ -1,0 +1,44 @@
+- 
+    NAME: test_model
+    TASK: structural_modeling
+    METHOD: create_finite_element_model
+    CFG:
+        GEOMETRY_TYPE: PLATE
+        WIDTH: 80
+        HEIGHT: 10
+        THICKNESS: 1
+        WIDTH_DIVIDE_NUM: 8
+        HEIGHT_DIVIDE_NUM: 1
+        YOUNGS_MODULUS: 70e+3
+        POISSONS_RATIO: 0.3
+        R3: 0
+        ELEM_TYPE: iQS4
+        NODE_NUM: 4
+        CONSTRAINT:  # constraint_dof: {node_id: constraint_value}
+            123456:
+                1: 0
+                12: 0
+-
+    NAME: test_sensor
+    TASK: sensor_modeling
+    METHOD: create_sensor
+    CFG:
+        SETTING_TYPE: discrete  # discrete, continuous
+        LOCATIONAL: True
+        DIRECTIONAL: False
+        LOCATION: [
+            [5, 5, 0], 
+            [25, 5, 0],
+            [45, 5, 0],
+            [65, 5, 0],
+            ]
+-
+    NAME: test_sensor
+    TASK: sensor_modeling
+    METHOD: create_sensor_structural_model_connection
+    CFG:
+        COMPONENT_NAME: fe_node
+        R1: 0
+        R2: 0
+        R3: -1
+    STRUCTURAL_MODEL_NAME: test_model

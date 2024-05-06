@@ -1,0 +1,41 @@
+SERVICE:
+  DOWNLOAD_DATA: False
+  INIT_DB: False
+  DATADRIVE: /root/datadrive_tmp
+  TABLE_DATA_SYSTEM: 'file'  # 'file' or 'postgres'
+  TIME_SERIES_DATA_SYSTEM: 'file'  # 'file' or 'influx'
+  PREPROCESS: []
+  DATA_PROCESSING_METHOD: stream  # 'batch', 'stream', or 'simulate_stream'
+  LAYOUT:
+    LAYOUT_NAME: tests.dashboard.content_layout
+    COLOR_THEME: white
+    PROJECT_TITLE: test_project
+    WINDOW_TITLE: test_window 
+    WINDOW_WIDTH: 1280
+    WINDOW_HEIGHT: 720
+  INTERVAL: 100
+SUBPACKAGES:
+  -
+    TASK: visualization
+    SUBPACKAGE_NAME: isas_subpackage_template.visualization
+    MODEL_NAME: Dropdowns
+    INIT_ARGS:
+      INSTANCE_NAME: visualization_template_dropdowns
+      SIZE_RATIO: [6, 6]
+      INPUT_DATA_NAME_DICT:
+      OUTPUT_DATA_NAME_DICT:
+    PARAMS:
+      DROPDOWN_LIST: ['a', 'b']
+      VARIABLE_NAME: text
+  -
+    TASK: visualization
+    SUBPACKAGE_NAME: isas_subpackage_template.visualization
+    MODEL_NAME: TextDrawer
+    INIT_ARGS:
+      INSTANCE_NAME: visualization_template_textdrawer
+      SIZE_RATIO: [6, 6]
+      INPUT_DATA_NAME_DICT:
+      OUTPUT_DATA_NAME_DICT:
+    PARAMS:
+      FONTSIZE: 20
+      VARIABLE_NAME: text

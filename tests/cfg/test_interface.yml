@@ -1,0 +1,46 @@
+SERVICE:
+  DOWNLOAD_DATA: False
+  INIT_DB: False
+  DATADRIVE: /root/datadrive_tmp
+  TABLE_DATA_SYSTEM: 'file'  # 'file' or 'postgres'
+  TIME_SERIES_DATA_SYSTEM: 'file'  # 'file' or 'influx'
+  PREPROCESS: []
+  DATA_PROCESSING_METHOD: batch  # 'batch', 'stream', or 'simulate_stream'
+  STREAM_EXPORT_QUEUE_MAXSIZE: 100
+  SIMULATE_STREAM_PARAMS:
+    SLEEP_TIME: 1  # sec
+    LOOP: False  # bool
+    FIRST_DATETIME: '2020-04-25 00:00:00'  # YYYY-mm-dd HH:MM:SS[.ffffff]
+    LAST_DATETIME: '2020-04-25 00:00:11'  # YYYY-mm-dd HH:MM:SS[.ffffff]
+    INTERVAL: 1  # sec
+
+SUBPACKAGES:
+  -
+    TASK: measurement
+    SUBPACKAGE_NAME: isas_subpackage_template.measurement
+    MODEL_NAME: MeasurementTemplate
+    INIT_ARGS:
+      INSTANCE_NAME: measurement_template
+      INPUT_DATA_NAMES: [rosette_strain_x]
+      OUTPUT_DATA_NAMES: ['measured_rosette_strain_x']
+      SENSOR_NAME: 'rosette'
+      SIMULATION: True
+    PARAMS:
+      TEST_KEY_1:
+        TEST_KEY_1_2: 1.2
+  -
+    TASK: analysis
+    SUBPACKAGE_NAME: isas_subpackage_template.analysis
+    MODEL_NAME: AnalysisTemplate
+    INIT_ARGS:
+      INSTANCE_NAME: analysis_template
+      INPUT_DATA_NAME_DICT:
+        input_quantity: [measured_rosette_strain_x]
+      OUTPUT_DATA_NAME_DICT:
+        output_quantity: [analyzed_rosette_strain_x]
+      STRUCTURAL_MODEL_NAME: beam
+    PARAMS:
+      TEST_KEY_1:
+        TEST_KEY_1_2: 1.2
+
+EXPORT_DATA_NAMES: []

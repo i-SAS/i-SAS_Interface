@@ -1,0 +1,11 @@
+services:
+  package:
+    build: ./
+    image: isas_interface
+    container_name: isas_interface_dev
+    volumes:
+      - .:/root/workspace
+      - ${HOST_DATADRIVE_PATH}/Interface:/root/datadrive
+      - ${HOST_SSH_PATH}:/root/.ssh
+    env_file:
+      - .env
