@@ -1,13 +1,10 @@
-# i-SAS_Interface_MIT
+# i-SAS_Interface
 Implementation of the interface for i-SAS
-
-> [!IMPORTANT]
-> This repository is not complete but development has been stopped.
 
 ## 1. Clone
 ```shell
-$ git clone git@github.com:i-SAS/i-SAS_Interface_MIT.git
-$ cd i-SAS_Interface_MIT
+$ git clone git@github.com:i-SAS/i-SAS_Interface.git
+$ cd i-SAS_Interface
 ```
 
 ## 2. Docker build & run

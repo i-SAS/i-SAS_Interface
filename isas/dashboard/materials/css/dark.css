@@ -1,0 +1,32 @@
+QWidget
+{
+    background-color: #333333;
+}
+QToolButton
+{
+    color: #ffffff;
+    background-color: transparent;
+    border: 1px;
+}
+QPushButton:checked
+{
+    background-color: #cccccc;
+    color: #222222;
+    border-radius: 5px;
+}
+QPushButton
+{
+    background-color: #222222;
+    color: #ffffff;
+    border-radius: 5px;
+    border: 1px;
+    font-weight: bold;
+}
+QPushButton:pressed
+{
+    background-color: #888888;
+}
+QLabel
+{
+    color: #ffffff;
+}

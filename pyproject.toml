@@ -11,11 +11,12 @@ packages = [
 [tool.poetry.dependencies]
 python = ">=3.11,<3.12"
 influxdb_client = "*"
-isas_base = { git = "ssh://git@github.com/i-SAS/i-SAS_Base_MIT", branch = "master" }
+isas_base = { git = "ssh://git@github.com/i-SAS/i-SAS_Base", tag = "v1.0.0" }
 matplotlib = "*"
 numpy = "*"
 pandas = "*"
 pyyaml = "*"
+pyside6 = "*"
 sqlalchemy = "*"
 scipy = "*"
 
@@ -24,7 +25,7 @@ flake8 = "6.1.0"
 flake8-isort = "*"
 flake8-quotes = "*"
 ipython = "*"
-isas_subpackage_template = {git = "ssh://git@github.com/i-SAS/i-SAS_Subpackage-template_MIT", branch = "master" }
+isas_subpackage_template = {git = "ssh://git@github.com/i-SAS/i-SAS_Subpackage-template", tag = "v1.0.0" }
 jupyter = "*"
 pep8-naming = "*"
 pyproject-flake8 = "*"

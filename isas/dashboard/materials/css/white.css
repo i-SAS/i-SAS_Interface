@@ -1,0 +1,14 @@
+QWidget
+{
+    background-color: #ffffff;
+}
+QToolButton
+{
+    color: #ffffff;
+    background-color: transparent;
+    border: transparent;
+}
+QLabel
+{
+    color: #000000;
+}

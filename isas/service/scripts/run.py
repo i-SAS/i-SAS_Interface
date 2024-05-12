@@ -12,6 +12,7 @@ LOGGER_NAMES = [
     'isas_base.subpackage.base_visualization',
     'isas.interface',
     'isas.dashboard.dashboard',
+    'isas.dashboard.qt.dashboard_app',
     'isas.service.service',
     'isas.service.socket',
 ]
