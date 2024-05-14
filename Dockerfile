@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:experimental
 
-FROM isas/isas_base:python3.11.8-poetry1.7.1
+FROM isas/isas_base:python3.11.8-poetry1.7.1-qt5.15
 
 COPY pyproject.toml poetry.toml poetry.lock $WORKDIR/
 RUN pip install --upgrade pip

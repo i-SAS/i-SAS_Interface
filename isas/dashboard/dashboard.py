@@ -2,6 +2,7 @@ import logging
 from typing import Any, Final
 
 from ..base import Base
+from .qt import DashboardApp
 
 logger = logging.getLogger(__name__)
 
@@ -46,12 +47,12 @@ class Dashboard(Base):
             )
 
     def __call__(self) -> None:
-        """Start updating Dashboard App."""
-        logger.info(f'[{self.SERVICE_TYPE}] Start Dashboard App.')
+        """Start updating Dashboard window."""
+        logger.info(f'[{self.SERVICE_TYPE}] Start Qt.')
         self.dashboard_app.start()
 
     def exit(self) -> None:
-        """Terminate Dashboard App."""
-        logger.info(f'[{self.SERVICE_TYPE}] Terminate Dashboard App.')
+        """Terminate Dashboard window."""
+        logger.info(f'[{self.SERVICE_TYPE}] Terminate Qt.')
         self.dashboard_app.terminate()
         logger.info(f'[{self.SERVICE_TYPE}] Exit.')
